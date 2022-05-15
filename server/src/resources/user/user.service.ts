@@ -80,7 +80,9 @@ class UserService implements IUserService {
     return { token };
   }
   public async getAll(): Promise<IUser[]> {
-    const user: IUser[] = await User.find({});
+    const user: IUser[] = await User.find({
+      select: ["email", "username"],
+    });
     return user;
   }
 }
